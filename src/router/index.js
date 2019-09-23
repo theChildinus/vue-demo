@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from './components/HelloWorld.vue'
-import NewContact from '@/components/NewContact'
 
 import UserInfo from '@/views/identitymag/UserInfo'
 import CreateUser from '@/views/identitymag/CreateUser'
@@ -9,9 +8,9 @@ import CreateUser from '@/views/identitymag/CreateUser'
 import ResourceInfo from '@/views/resourcemag/ResourceInfo'
 import AddResource from '@/views/resourcemag/AddResource'
 
-import Organization from '@/views/authmag/Organization'
-import EditPolicy from '@/views/authmag/EditPolicy'
 import PolicyInfo from '@/views/authmag/PolicyInfo'
+import EditPolicy from '@/views/authmag/EditPolicy'
+
 Vue.use(Router)
 
 export default new Router({
@@ -21,11 +20,7 @@ export default new Router({
     //   name: 'HelloWorld',
     //   component: HelloWorld
     // },
-    {
-      path: '/newcontact',
-      name: 'NewContact',
-      component: NewContact
-    },
+
     // 身份管理 -- 用户信息 + 新建用户
     {
       path: '/userinfo',
@@ -38,7 +33,7 @@ export default new Router({
       component: CreateUser
     },
 
-    // 资源管理 -- 资源信息 + 添加资源
+    // 资源管理 -- 资源信息 + 编辑资源
     {
       path: '/resourceinfo',
       name: 'ResourceInfo',
@@ -50,21 +45,16 @@ export default new Router({
       component: AddResource
     },
 
-    // 权限管理 -- 组织管理 + 查看资源 + 编辑策略
+    // 权限管理 - 策略信息 + 编辑策略
     {
-      path: '/organization',
-      name: 'Organization',
-      component: Organization
+      path: '/policyinfo',
+      name: 'PolicyInfo',
+      component: PolicyInfo
     },
     {
       path: '/editpolicy',
       name: 'EditPolicy',
       component: EditPolicy
-    },
-    {
-      path: '/policyinfo',
-      name: 'PolicyInfo',
-      component: PolicyInfo
     }
   ]
 })

@@ -1,88 +1,44 @@
 <template>
-  <el-table
-    ref="filterTable"
-    :data="tableData"
-    style="width: 100%">
-    <el-table-column
-      prop="date"
-      label="日期"
-      sortable
-      width="180"
-      column-key="date"
-      :filters="[{text: '2016-05-01', value: '2016-05-01'}, {text: '2016-05-02', value: '2016-05-02'}, {text: '2016-05-03', value: '2016-05-03'}, {text: '2016-05-04', value: '2016-05-04'}]"
-      :filter-method="filterHandler"
-    >
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址"
-      :formatter="formatter">
-    </el-table-column>
-    <el-table-column
-      prop="tag"
-      label="标签"
-      width="100"
-      :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
-      :filter-method="filterTag"
-      filter-placement="bottom-end">
-      <template slot-scope="scope">
-        <el-tag
-          :type="scope.row.tag === '家' ? 'primary' : 'success'"
-          disable-transitions>{{scope.row.tag}}</el-tag>
-      </template>
-    </el-table-column>
-  </el-table>
+  <div class="container">
+    <el-card v-for="u in 8" :key="u" shadow="hover" class="box-card">
+      <div slot="header" class="clearfix">
+        <span>{{'用户' + u}}</span>
+        <el-button style="float: right; padding: 3px 0" type="text">编辑</el-button>
+      </div>
+      <div class="text item">身份：管理员</div>
+      <div class="text item">状态：在线</div>
+      <div class="text item">部门：{{u}}</div>
+      <div class="text item">联系方式：{{u}}</div>
+    </el-card>
+  </div>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-        tag: '家'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄',
-        tag: '公司'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄',
-        tag: '家'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄',
-        tag: '公司'
-      }]
-    }
-  },
-  methods: {
-    resetDateFilter () {
-      this.$refs.filterTable.clearFilter('date')
-    },
-    clearFilter () {
-      this.$refs.filterTable.clearFilter()
-    },
-    formatter (row, column) {
-      return row.address
-    },
-    filterTag (value, row) {
-      return row.tag === value
-    },
-    filterHandler (value, row, column) {
-      const property = column['property']
-      return row[property] === value
-    }
-  }
+<style>
+.text {
+  font-size: 14px;
 }
-</script>
+
+.item {
+  margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.box-card {
+  width: 320px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+</style>
