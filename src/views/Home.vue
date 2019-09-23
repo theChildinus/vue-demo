@@ -9,9 +9,9 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-menu-item index="1" @click="skip('userinfo')">身份管理</el-menu-item>
-      <el-menu-item index="2" @click="skip('resourceinfo')">资源管理</el-menu-item>
-      <el-menu-item index="3" @click="skip('policyinfo')">权限管理</el-menu-item>
+      <el-menu-item index="1" @click="skip('userinfo')"><i class="el-icon-user"></i>身份管理</el-menu-item>
+      <el-menu-item index="2" @click="skip('resourceinfo')"><i class="el-icon-collection"></i>资源管理</el-menu-item>
+      <el-menu-item index="3" @click="skip('policyinfo')"><i class="el-icon-key"></i>权限管理</el-menu-item>
     </el-menu>
     <router-view></router-view>
   </div>
